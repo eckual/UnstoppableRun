@@ -1,4 +1,4 @@
-using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         var inputXPosition = ((Input.mousePosition.x - _halfScreen) / _halfScreen) *  limitValue;
-        playerTransform.localPosition = new Vector3(Mathf.Clamp(inputXPosition,-limitValue,limitValue), 1, 0);
+
+        playerTransform
+            .DOLocalMoveX(Mathf.Clamp(inputXPosition, -limitValue, limitValue), 0);
     }
 }
